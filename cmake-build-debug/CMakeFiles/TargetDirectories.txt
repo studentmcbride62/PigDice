@@ -1,0 +1,3 @@
+/home/administrator/CLionProjects/PigDice/cmake-build-debug/CMakeFiles/PigDice.dir
+/home/administrator/CLionProjects/PigDice/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/administrator/CLionProjects/PigDice/cmake-build-debug/CMakeFiles/rebuild_cache.dir
