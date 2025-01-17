@@ -1,21 +1,28 @@
 #include <iostream>
 
-void display_rules();
-void hold(bool &turn_over, int &game_score, int &score_this_turn, bool &game_over);
-void roll(int &score_this_turn, bool &turn_over);
-void take_turn(int &turn_count, bool &turn_over, int &game_score, int &score_this_turn, bool &game_over);
-void play_game(bool &game_over, int &turn_count, int &score_this_turn, int &game_score, bool &turn_over);
-
-int main() {
+struct GameState {
     char choice;
     int turn_count = 0;
     int game_score = 0;
     int score_this_turn = 0;
     bool game_over = false;
     bool turn_over = false;
+};
+
+void display_rules();
+void hold(GameState & my_game);
+void roll(GameState & my_game);
+void take_turn(GameState & my_game);
+void play_game(GameState & my_game);
+
+
+
+int main() {
+
+    GameState my_game;
 
     display_rules();
-    play_game(game_over, turn_count, score_this_turn, game_score, turn_over);
+    play_game(my_game);
     return 0;
 }
 
@@ -27,54 +34,54 @@ void display_rules() {
     std::cout << "\n* If you hold, you save all points for the turn.";
 }
 
-void play_game(bool &game_over, int &turn_count, int &score_this_turn, int &game_score, bool &turn_over) {
-    while(!game_over) {
-        take_turn(turn_count, turn_over, game_score, score_this_turn, game_over);
+void play_game(GameState & my_game) {
+    while(!my_game.game_over) {
+        take_turn(my_game);
     }
-    std::cout << "\n\nYou finished with a final score of 20 or more in " << turn_count << " turns!";
+    std::cout << "\n\nYou finished with a final score of 20 or more in " << my_game.turn_count << " turns!";
 }
 
-void take_turn(int &turn_count, bool &turn_over, int &game_score, int &score_this_turn, bool &game_over) {
-    turn_count++;
-    std::cout << "\n\nTURN " << turn_count;
-    while(!turn_over) {
+void take_turn(GameState & my_game) {
+    my_game.turn_count++;
+    std::cout << "\n\nTURN " << my_game.turn_count;
+    while(!my_game.turn_over) {
         char choice;
         std::cout << "\nroll or hold? (r/h): ";
         std::cin >> choice;
         if(choice == 'r') {
-            roll(score_this_turn, turn_over);
+            roll(my_game);
         }
         else if(choice == 'h') {
-            hold(turn_over, game_score, score_this_turn, game_over);
+            hold(my_game);
         }
         else {
             std::cout << "Invalid choice! Try again.";
         }
     }
-    std::cout << "Score for turn:" << score_this_turn;
-    std::cout << "\nTotal score:" << game_score;
-    turn_over = false;
-    score_this_turn = 0;
+    std::cout << "Score for turn:" << my_game.score_this_turn;
+    std::cout << "\nTotal score:" << my_game.game_score;
+    my_game.turn_over = false;
+    my_game.score_this_turn = 0;
 }
 
-void roll(int &score_this_turn, bool &turn_over) {
+void roll(GameState & my_game) {
     srand(time(NULL));
     int die_value = rand() % 6 +1;
     std::cout << "Die: " << die_value;
     if (die_value == 1) {
-        score_this_turn = 0;
-        turn_over = true;
+        my_game.score_this_turn = 0;
+        my_game.turn_over = true;
         std::cout << "\nTurn over. No score.\n";
     }
     else {
-        score_this_turn += die_value;
+        my_game.score_this_turn += die_value;
     }
 }
 
-void hold(bool &turn_over, int &game_score, int &score_this_turn, bool &game_over) {
-    turn_over = true;
-    game_score += score_this_turn;
-    if (game_score >= 20) {
-        game_over = true;
+void hold(GameState & my_game) {
+    my_game.turn_over = true;
+    my_game.game_score += my_game.score_this_turn;
+    if (my_game.game_score >= 20) {
+        my_game.game_over = true;
     }
 }
