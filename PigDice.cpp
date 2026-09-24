@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <random>
 
+
 // Build your solution starting from this code.
 
 struct GameState {
@@ -20,11 +21,11 @@ private:
     int m_numOfSides;
 public:
     Die() {  // default constructor
-        m_value = 0;
         m_numOfSides = 6;
+        setValue();
     }
 
-    void set_numOfSides(int numOfSides) {
+    void setNumOfSides(int numOfSides) {
         switch (numOfSides) {
             case 4:
                 m_numOfSides = 4;
@@ -68,8 +69,6 @@ void hold(GameState &g);
 
 int main() {
     GameState my_game; // instantiate a GameState object
-    Die myDie;
-    myDie.setValue();
     display_rules(); // call the display_rules function
     play_game(my_game); // call the play_game function and pass the GameState object
     return 0;
@@ -122,16 +121,18 @@ void take_turn(GameState &g) {
 }
 
 void roll(GameState &g) {
-    srand(time(NULL));
-    int die = rand() % 6 + 1;
-    std::cout << "Die: " << die;
-    if (die == 1) {
+    /*srand(time(NULL));
+    int die = rand() % 6 + 1;*/
+    Die myDie;  // calls the default constructor
+    //myDie.setValue();  // calling the public function to roll the die
+    std::cout << "Die: " << myDie.getValue();
+    if (myDie.getValue() == 1) {
         std::cout << "\nTurn over. No score.\n";
         g.score_this_turn = 0;
         g.turn_over = true;
     }
     else {
-        g.score_this_turn+=die;
+        g.score_this_turn+=myDie.getValue();
         std::cout << " - Running score this turn: " << g.score_this_turn;
     }
 }
