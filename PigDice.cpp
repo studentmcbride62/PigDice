@@ -80,6 +80,7 @@ void display_rules() {
     std::cout<<"* If you hold, you bank all points for the turn to the game score.\n";
 }
 
+
 void play_game(GameState &g) {
     while (!g.game_over) {
         take_turn(g);
