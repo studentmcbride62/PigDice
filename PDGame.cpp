@@ -6,8 +6,12 @@
 PDGame::PDGame() {
     m_gameOver = false;
     m_gameScore = 0;
+    m_myTurn.setParentGame(this); // 7.
     displayRules();
     playGame();
+}
+int PDGame::getGameScore() const { // 2.
+    return m_gameScore;
 }
 void PDGame::displayRules() {
     std::cout << "Let's Play PIG Dice!\n\n";
