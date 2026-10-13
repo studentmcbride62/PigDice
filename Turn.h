@@ -1,6 +1,9 @@
 #ifndef PIGDICE_STUDENTMCBRIDE62_TURN_H
 #define PIGDICE_STUDENTMCBRIDE62_TURN_H
 #include "Die.h"
+//#include "PDGame.h"
+
+class PDGame; // 3.
 
 class Turn {
 private:
@@ -9,8 +12,10 @@ private:
     bool m_turnOver;
     char m_choice;
     Die m_myDie;
+    PDGame* m_parentGame = nullptr; // 4.
 public:
     Turn();
+    void setParentGame(PDGame* parentGame); // 5.
     void takeTurn();
     int getScoreThisTurn() const;
     void resetTurnOver();
