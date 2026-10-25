@@ -9,7 +9,8 @@ private:
     int m_gameScore;
 public:
     PDGame();
-    int getGameScore() const; // 1.
+    // 1. add interface for public getter method to return private m_gameScore from “whole”
+    int getGameScore() const;
 private:
     void displayRules();
     void playGame();
