@@ -6,11 +6,13 @@
 PDGame::PDGame() {
     m_gameOver = false;
     m_gameScore = 0;
-    m_myTurn.setParentGame(this); // 7.
+    // 7. add call to “part” object’s (Turn) public method to set the parent game object’s “whole” pointer from the “whole” constructor and pass the “whole”  part object’s address
+    m_myTurn.setParentGame(this);
     displayRules();
     playGame();
 }
-int PDGame::getGameScore() const { // 2.
+// 2. add implementation for public getter of m_gameScore
+int PDGame::getGameScore() const {
     return m_gameScore;
 }
 void PDGame::displayRules() {
