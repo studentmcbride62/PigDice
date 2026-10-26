@@ -9,9 +9,9 @@ private:
     std::string m_playerName;
 public:
     PDGameV2(std::string &playersName);
-    virtual ~PDGameV2() {
+    /*virtual ~PDGameV2() {
         // destruct PDGameV2 object
-    }
+    }*/
     std::string getPlayerName() const;
     static void displayRules();
     void playGame() override;
