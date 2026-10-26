@@ -1,6 +1,7 @@
-#include "PDGame.h"
+#include "MultiPlayerGame.h"
 // Build your solution starting from this code.
 int main() {
-        PDGame game;
+       MultiPlayerGame game;
+       game.mpPlayGame();
        return 0;
 }
