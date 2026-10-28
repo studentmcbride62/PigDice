@@ -13,7 +13,7 @@ public:
     int getGameScore() const;
 private:
     void displayRules();
-protected:
+public:
     virtual void playGame();
 };
 

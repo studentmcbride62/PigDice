@@ -6,6 +6,7 @@
 #include "PDGameV2.h"
 
 MultiPlayerGame :: MultiPlayerGame() {
+    m_gameOver = false;
     int count = 0;
     std::string tempName;
     std::cout << "How many people are playing? ";
@@ -21,8 +22,8 @@ MultiPlayerGame :: MultiPlayerGame() {
 
 void MultiPlayerGame::displayScoreBoard() {
     std::cout << "\n\n";
-    for (auto player: m_players) {
-        std::cout << player.getPlayerName() << " (Score:" << player.getGameScore() << ") | ";
+    for (int i =0 ; i < m_players.size(); i++) {
+       std::cout << m_players.at(i).getPlayerName() << " (Score:" << m_players.at(i).getGameScore() << ") | ";
     }
 }
 
@@ -30,8 +31,9 @@ void MultiPlayerGame :: checkForWinner() {
     std::vector<int> over50(m_players.size());
     for (int i = 0; i < m_players.size(); i++) {
         if (m_players.at(i).getGameScore() >= 50) {
-            m_gameOver = true;
+            std::cout << m_players.at(i).getGameScore();
             over50.at(i) = m_players.at(i).getGameScore();
+            m_gameOver = true;
         }
     }
     if (m_gameOver) {
@@ -47,7 +49,7 @@ void MultiPlayerGame :: mpPlayGame() {
         for (int i = 0; i < m_players.size(); i++) {
             std::cout << "\n\n" << m_players[i].getPlayerName() << " (Score:" << m_players[i].getGameScore() << ") - ";
             m_players.at(i).playGame();
-            displayScoreBoard();
+            //displayScoreBoard();
         }
         checkForWinner();
     }
