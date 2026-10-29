@@ -49,7 +49,7 @@ void MultiPlayerGame :: mpPlayGame() {
         for (int i = 0; i < m_players.size(); i++) {
             std::cout << "\n\n" << m_players[i].getPlayerName() << " (Score:" << m_players[i].getGameScore() << ") - ";
             m_players.at(i).playGame();
-            //displayScoreBoard();
+            displayScoreBoard();
         }
         checkForWinner();
     }
