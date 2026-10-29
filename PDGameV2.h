@@ -8,7 +8,7 @@ class PDGameV2:public PDGame {
 private:
     std::string m_playerName;
 public:
-    PDGameV2(std::string &playersName);
+    PDGameV2(std::string &playerName);
     /*virtual ~PDGameV2() {
         // destruct PDGameV2 object
     }*/
