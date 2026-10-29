@@ -11,7 +11,7 @@ private:
     int m_scoreThisTurn;
     bool m_turnOver;
     char m_choice;
-    Die m_myDie;
+    DIE m_myDie;
     // 4. add a back pointer to the "whole" initialized to null pointer (defensive programming)
     PDGame* m_parentGame = nullptr;
 public:
