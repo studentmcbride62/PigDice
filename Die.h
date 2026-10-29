@@ -1,13 +1,15 @@
-
 #ifndef PIGDICE_STUDENTMCBRIDE62_DIE_H
 #define PIGDICE_STUDENTMCBRIDE62_DIE_H
 
-class DIE {
+class Die {
 private:
     int m_dieValue;
+
 public:
-    DIE();
+    Die();
+
     void rollDie();
+
     int getDieValue() const;
 };
 
